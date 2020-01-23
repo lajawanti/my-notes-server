@@ -1,7 +1,8 @@
 const jwt = require('jsonwebtoken');
 
-const jwtKey = require('../_secrets/keys').jwtKey;
+//const jwtKey = require('../_secrets/keys').jwtKey;
 
+require('dotenv').config()
 // quickly see what this file exports
 module.exports = {
     authenticate, 
@@ -13,13 +14,13 @@ function generateToken(user) {
     const jwtPayload = {
         ...user,
     };
-    //const jwtSecret = process.env.JWT_SECRET;
+    const jwtSecret = process.env.JWT_SECRET;
 
     const jwtOptions = {
         expiresIn : '1h',
     };
 
-    return jwt.sign(jwtPayload, jwtKey, jwtOptions);
+    return jwt.sign(jwtPayload, jwtSecret, jwtOptions);
 }
 
 //authenticate Function TO CHECK LOGGED-IN USER...
@@ -27,7 +28,7 @@ function authenticate(req, res, next) {
   const token = req.get('Authorization');
 
   if (token) {
-    jwt.verify(token, jwtKey, (err, decoded) => {
+    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
       if (err) return res.status(401).json(err);
 
       req.decoded = decoded;

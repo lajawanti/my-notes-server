@@ -6,7 +6,7 @@
   "scripts": {
     "server": "nodemon",
     "test": "jest --watch --verbose",
-    "start" : "node index.js"
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -20,14 +20,17 @@
   },
   "homepage": "https://github.com/lajawanti/back-end-project-week#readme",
   "dependencies": {
+    "@hapi/joi": "^17.1.0",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "express": "^4.16.4",
     "helmet": "^3.15.0",
     "jest": "^23.6.0",
     "jsonwebtoken": "^8.4.0",
     "knex": "^0.16.2",
-    "sqlite3": "^4.0.4",
+    "morgan": "^1.9.1",
+    "sqlite3": "^4.1.1",
     "supertest": "^3.3.0"
   },
   "devDependencies": {
