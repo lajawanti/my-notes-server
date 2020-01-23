@@ -144,7 +144,7 @@ function register(req, res) {
 function login(req, res) {
     // implement user login
     const credentials = req.body;
-    console.log("cresdit received  :  ",credentials)
+    console.log("$$$$$$$$$$$$$$$$$$$$$  cresdit received  :  ",credentials)
     const {error, value} = schema.validate({ username: credentials.username, password: credentials.password });
     if(error){
         res.send(error.message)
